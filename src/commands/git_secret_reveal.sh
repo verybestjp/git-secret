@@ -25,8 +25,6 @@ function reveal {
   shift $((OPTIND-1))
   [ "$1" = '--' ] && shift
 
-  _user_required
-
   # Command logic:
 
   local path_mappings

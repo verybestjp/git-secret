@@ -33,7 +33,7 @@ function reveal {
   path_mappings=$(_get_secrets_dir_paths_mapping)
 
   local counter=0
-  while read -r line; do
+  for line in $(cat "$path_mappings"); do
     local filename
     local path
     filename=$(_get_record_filename "$line")
@@ -43,7 +43,7 @@ function reveal {
     _decrypt "$path" "1" "$force" "$homedir" "$passphrase"
 
     counter=$((counter+1))
-  done < "$path_mappings"
+  done
 
   echo "done. all $counter files are revealed."
 }

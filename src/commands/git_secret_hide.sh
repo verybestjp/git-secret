@@ -53,6 +53,9 @@ function _optional_delete {
 
 function _get_checksum_local {
   local checksum="$SECRETS_CHECKSUM_COMMAND"
+  if ! type "$checksum" 2> /dev/null; then
+    checksum="shasum -a 256"
+  fi
   echo "$checksum"
 }
 
